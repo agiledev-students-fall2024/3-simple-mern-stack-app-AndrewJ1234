@@ -57,7 +57,25 @@ app.get('/messages/:messageId', async (req, res) => {
     })
   }
 })
-// a route to handle logging out users
+
+// my description
+app.get('/aboutme', (req, res) => {
+  try{
+    const data = {
+      paragraphs: [
+      'Hello, I am Andrew Jiang. I am currently a junior majoring in Computer Science. My passion from coding comes from its ability to be creative with solutions and algorithms. Additionally, it is a way to help people whether it’s helping them build a website or working with AI. More importantly, I believe that by studying CS I can help improve the world by building software that people need.',
+       'For fun, I like to paint, travel and do woodworking. I have been traveling to Europe and Asia for many years but my favorite place to go to is Japan. I really enjoy Japanese culture as well as their fashion. I think that at Shibuya Crossing, I was able to see very unique and interesting outfits and I had never seen before.' 
+    ],
+    image: 'https://media.licdn.com/dms/image/v2/D5603AQGMOmKYmw2ZmQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1725464218376?e=2147483647&v=beta&t=PSGnbAA2SYorJ85sSLd4s0Q2xewHUI1EuYXGATutR9I',
+    }
+    res.json(data)
+  }
+  catch (err) {
+    console.error(err)
+  }
+});
+
+
 app.post('/messages/save', async (req, res) => {
   // try to save the message to the database
   try {
@@ -77,6 +95,10 @@ app.post('/messages/save', async (req, res) => {
     })
   }
 })
+
+
+
+
 
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
